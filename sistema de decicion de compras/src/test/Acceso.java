@@ -16,7 +16,7 @@ public class Acceso extends DBAdapter {
 	private static final String selectFechasStr="select min(fecha),max(fecha) from venta";
 	
 	public Acceso() {
-		super("root", "root","com.mysql.jdbc.Driver","jdbc:mysql://localhost/abarrotesreos");
+		super("root", "root","com.mysql.jdbc.Driver","jdbc:mysql://localhost/abarrotes");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,7 +34,11 @@ public class Acceso extends DBAdapter {
 			ResultSet rs=selectFechas.executeQuery();
 			float dias=1;
 			if(rs.next()){
-				long dif=rs.getDate(2).getTime()-rs.getDate(1).getTime();
+				Date fe=rs.getDate(2);
+				if(fe==null){
+					return null;
+				}
+				long dif=fe.getTime()-rs.getDate(1).getTime();
 				dif=dif/1000;
 				dif=dif/60;
 				dif=dif/60;

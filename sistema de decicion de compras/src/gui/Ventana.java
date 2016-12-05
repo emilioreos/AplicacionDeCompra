@@ -125,7 +125,6 @@ public class Ventana extends JFrame implements Runnable {
 			bd.cerrar();
 			llenarListas();
 		}catch(Exception e){
-			e.printStackTrace();
 		}
 		Ventana.this.setTitle(Ventana.this.getTitle().replace(" - Actualizando", ""));
 		ejecutando=false;
